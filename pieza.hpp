@@ -2,6 +2,11 @@
 #define PIEZA_HPP
 
 #include <string>
+#include <iomanip>
+#include <cmath>
+#include <iostream>
+
+using namespace std;
 
 class Pieza{
 	public:
