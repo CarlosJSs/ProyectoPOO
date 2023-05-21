@@ -1,15 +1,15 @@
-#include "torre.hpp"
+#include "reina.hpp"
 
-Torre::Torre(){
+Reina::Reina(){
 	Pieza();
-	m_icono[0]='T';
+	m_icono[0]='Q';
 }
-Torre::Torre(int fila, int columna, char color){
+Reina::Reina(int fila, int columna, char color){
 	Pieza(fila,columna,color);
-	m_icono[0]='T';
+	m_icono[0]='Q';
 }
 
-bool Torre::validarMovimiento(int fila, int columna, Pieza* casilla){
+bool Reina::validarMovimiento(int fila, int columna, Pieza* casilla){
 	cout<<endl;
 
 	//Origen == Destino
@@ -18,13 +18,13 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casilla){
 		return false;
 	}
 
-	//Movimiento diferente a +
-	if((m_fila==fila)==(m_columna==m_columna)){
-		cout<<"Movimiento NO VALIDO: La torre no puede avanzar a esa posicion."<<endl;
+	//Movimiento diferente a + y x
+	if((abs(m_columna-columna)!=abs(m_fila-fila)) && ((m_fila==fila)==(m_color==columna))){
+		cout<<"Movimiento NO VALIDO: La Reina no puede avanzar a esa posicion"<<endl;
 		return false;
 	}
 
-	//Quiere comer una pieza propia
+	//Intenta comer
 	if(casilla!=nullptr){
 		if(casilla->getColor()==m_color){
 			cout<<"Movimiento NO VALIDO: Una pieza del mismo color ocupa la posicion de destino."<<endl;
