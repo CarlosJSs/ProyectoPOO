@@ -1,11 +1,9 @@
 #include "caballo.hpp"
 
-Caballo::Caballo(){
-	Pieza();
+Caballo::Caballo(): Pieza(){
 	m_icono[0]='C';
 }
-Caballo::Caballo(int fila, int columna, char color){
-	Pieza(fila,columna,color);
+Caballo::Caballo(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='C';
 }
 

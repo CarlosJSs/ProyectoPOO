@@ -1,11 +1,9 @@
 #include "rey.hpp"
 
-Rey::Rey(){
-    Pieza();
+Rey::Rey(): Pieza(){
 	m_icono[0]='K';
 }
-Rey::Rey(int fila, int columna, char color){
-    Pieza(fila,columna,color);
+Rey::Rey(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='K';
 }
 

@@ -1,12 +1,10 @@
 #include "peon.hpp"
 
-Peon::Peon(){
-	Pieza();
+Peon::Peon(): Pieza(){
 	primerMovimiento=true;
 	m_icono[0]='P';
 }
-Peon::Peon(int fila, int columna, char color){
-	Pieza(fila,columna,color);
+Peon::Peon(int fila, int columna, char color): Pieza(fila,columna,color){
 	primerMovimiento=true;
 	m_icono[0]='P';
 }
@@ -32,7 +30,7 @@ bool Peon::validarMovimiento(int fila, int columna, Pieza* casilla){
 
 	//Se quiere mover mas de 1 casilla o de lado (Moverse, No Comer)
 	if(((m_fila-fila)!=(m_color=='B'? -1 : 1)) || abs(m_columna-columna)>1){
-		cout<<"Movimiento NO VALIDO: El peon no puede moverse a esa posicion."
+		cout<<"Movimiento NO VALIDO: El peon no puede moverse a esa posicion.";
 		return false;
 	}
 
@@ -46,7 +44,7 @@ bool Peon::validarMovimiento(int fila, int columna, Pieza* casilla){
 
 		//Casilla destino ocupada por una pieza propia
 		if(casilla->getColor()==m_color){
-			cout<<endl<<"Movimiento NO VALIDO: La casilla debe tener una pieza "<<(color=='B'? "NEGRA" : "BLANCA");
+			cout<<endl<<"Movimiento NO VALIDO: La casilla debe tener una pieza "<<(m_color=='B'? "NEGRA" : "BLANCA");
 			return false;
 		}
 		

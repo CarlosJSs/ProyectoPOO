@@ -1,11 +1,9 @@
 #include "reina.hpp"
 
-Reina::Reina(){
-	Pieza();
+Reina::Reina(): Pieza(){
 	m_icono[0]='Q';
 }
-Reina::Reina(int fila, int columna, char color){
-	Pieza(fila,columna,color);
+Reina::Reina(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='Q';
 }
 

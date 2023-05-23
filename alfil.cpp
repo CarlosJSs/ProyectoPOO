@@ -1,11 +1,9 @@
 #include "alfil.hpp"
 
-Alfil::Alfil(){
-	Pieza();
+Alfil::Alfil(): Pieza(){
 	m_icono[0]='A';
 }
-Alfil::Alfil(int fila, int columna, char color){
-	Pieza(fila,columna,color);
+Alfil::Alfil(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='A';
 }
 

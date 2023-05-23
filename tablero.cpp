@@ -32,7 +32,7 @@ Tablero::Tablero(): cantColumnas(8), cantFilas(8), cantPiezas(32){
     listaPiezas[15] = new Rey(7,4,'N');
 
     // Insertar los peones en la lista
-    for(int i=0; i<tamX; i++) {
+    for(int i=0; i<cantColumnas; i++) {
         listaPiezas[16+2*i] = new Peon(1,i,'B');
         listaPiezas[17+2*i] = new Peon(6,i,'N');
     }
@@ -100,13 +100,13 @@ bool Tablero::posicionValida(string pos) const{
 }
 Pieza* Tablero::buscarPieza(int fila, int columna){
 	for(int i=0;i<cantPiezas;i+=1)
-		if(listaPiezas[i]->getFila()==fila && listaPiezas[i]->getColumna==columna)
+		if(listaPiezas[i]->getFila()==fila && listaPiezas[i]->getColumna()==columna)
 			return listaPiezas[i];
 
 	return nullptr;
 }
 void Tablero::eliminarPieza(int fila, int columna){
-	Pieza* eliminada=buscarPieza(fila,columna);i
+	Pieza* eliminada=buscarPieza(fila,columna);
 
 	if(eliminada!=nullptr){
 		Pieza** Aux=new Pieza* [cantPiezas-1];
