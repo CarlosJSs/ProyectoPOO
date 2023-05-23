@@ -17,7 +17,7 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casilla){
 	}
 
 	//Movimiento diferente a +
-	if((m_fila==fila)==(m_columna==m_columna)){
+	if((m_fila==fila)==(m_columna==columna)){
 		cout<<"Movimiento NO VALIDO: La torre no puede avanzar a esa posicion."<<endl;
 		return false;
 	}

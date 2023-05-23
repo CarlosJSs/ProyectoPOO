@@ -1,5 +1,8 @@
-#include <iostream>
-#include <string>
+#include "pieza.hpp"
+#include "tablero.hpp"
+#include "partida.hpp"
+
+using namespace std;
 
 /*
 	Integrantes:
@@ -10,6 +13,7 @@
 */
 
 int main(){
-	
+	Partida juego;
+	juego.inciarPartida();
 	return 0;
 }

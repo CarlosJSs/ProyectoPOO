@@ -65,7 +65,7 @@ void Tablero::imprimirTablero(){
 		
 		//Parte de la separacion
 		cout<<endl<<string(2,' ');
-		for(int j=0;j<cantColumnas;j=+1)
+		for(int j=0;j<cantColumnas;j+=1)
 			cout<<setfill('-')<<setw(5)<<left<<'+';
 		cout<<'+'<<endl;
 
@@ -135,16 +135,19 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 		return false;
 	}
 	//Quiere mover una pieza agena
-	if(casillaOrigen->getColor()!=(turno? 'B' : 'N')){
+	if(casillaOrigen->getColor()!=(turno? 'B':'N')){
 		cout<<endl<<"Movimiento NO VALIDO: Solo se pueden elegir piezas "<<(turno? "BLANCAS" : "NEGRAS");
 		return false;
 	}
+	
 	//Si la pieza no se puede mover asi
-	if(!(casillaDestino->validarMovimiento(fila2,columna2,casillaDestino)))
+	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino))){
 		return false;
+	}
 	//Si la casilla Destino esta ocupada
-	if(casillaDestino!=nullptr)
+	if(casillaDestino!=nullptr){
 		eliminarPieza(fila2,columna2);
+	}
 
 	//Para los demas casos
 	casillaOrigen->setFila(fila2);

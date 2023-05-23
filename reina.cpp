@@ -17,7 +17,7 @@ bool Reina::validarMovimiento(int fila, int columna, Pieza* casilla){
 	}
 
 	//Movimiento diferente a + y x
-	if((abs(m_columna-columna)!=abs(m_fila-fila)) && ((m_fila==fila)==(m_color==columna))){
+	if((abs(m_columna-columna)!=abs(m_fila-fila)) && ((m_fila==fila)==(m_columna==columna))){
 		cout<<"Movimiento NO VALIDO: La Reina no puede avanzar a esa posicion"<<endl;
 		return false;
 	}

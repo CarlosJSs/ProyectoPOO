@@ -15,11 +15,13 @@ void Partida::realizarMovimiento(){
     cout<<"\tCasilla de Destino: ";
     cin>>casillaDestino;
 
-    if(m_tablero.posicionValida(casillaOrigen) && m_tablero.posicionValida(casillaDestino))
-        if(m_tablero.moverPieza(casillaOrigen[1]-'1',casillaOrigen[0]-'A',casillaDestino[1]-'1',casillaDestino[0]-'A',turno))
+    if(m_tablero.posicionValida(casillaOrigen) && m_tablero.posicionValida(casillaDestino)){
+        if(m_tablero.moverPieza(casillaOrigen[1]-'1',casillaOrigen[0]-'A',casillaDestino[1]-'1',casillaDestino[0]-'A',turno)){
             turno=!turno;
-    else
+        }
+    }else{
         cout<<endl<<"Los valores introducidos NO SON VALIDOS.";
+    }
 }
 void Partida::inciarPartida(){
     cout<<endl<<"Inicio de la partdida..."<<endl;
@@ -31,11 +33,12 @@ void Partida::inciarPartida(){
         cout<<endl<<"\tOpciones:";
         cout<<endl<<"\t\t - 1: Mover una pieza.";
         cout<<endl<<"\t\t - 0: Rendirse.";
-        
+        cout<<endl<<endl;
+
         do{
-            cout<<endl<<endl<<"\tDigite la opcion deseada: ";
+            cout<<"\tDigite la opcion deseada: ";
             cin>>opcion;
-        }while(opcion!=0 || opcion!=1);
+        }while(opcion!=0 && opcion!=1);
 
         switch(opcion){
             case 1:
@@ -52,6 +55,6 @@ void Partida::inciarPartida(){
 
     }while(opcion!=0);
     
-    cout<<endl<<endl<<"\t\t\t\tFIN DEl JUEGO...";
-    cout<<endl<<"\t\t\tGanador: Piezas "<<(turno? "BLANCAS" : "NEGRAS")<<".";
+    cout<<endl<<endl<<"\t\tFIN DEl JUEGO...";
+    cout<<endl<<"\t\tGanador: Piezas "<<(turno? "BLANCAS" : "NEGRAS")<<".";
 }
