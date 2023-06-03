@@ -7,7 +7,7 @@ Alfil::Alfil(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='A';
 }
 
-bool Alfil::validarMovimiento(int fila, int columna, Pieza* casilla){
+bool Alfil::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
 	cout<<endl;
 
 	//Origen == Destino
@@ -22,13 +22,35 @@ bool Alfil::validarMovimiento(int fila, int columna, Pieza* casilla){
 		return false;
 	}
 
+	//Checar obstaculos en Diagonal
+	int flaActual=m_fila;
+	int clmnActual=m_columna;
+	int flaDiferencia=(fila>m_fila)? 1 : -1;
+	int clmnDiferencia=(columna>m_columna)? 1 : -1;
+
+	while(flaActual!=fila && clmnActual!=columna){
+		flaActual+=flaDiferencia;
+		clmnActual+=clmnDiferencia;
+
+		if(flaActual==fila && clmnActual==columna){
+			break;
+		}
+
+		if(TableroBin[flaActual][clmnActual]==1){
+			cout<<"Movimiento NO VALIDO: El Caballo es la unica pieza que puede brincar otras piezas."<<endl;
+			return false;
+		}
+	}
+	//---------------------------------------------------------
+
 	//Intenta comer
-	if(casilla!=nullptr){
-		if(casilla->getColor()==m_color){
+	if(casillaDestino!=nullptr){
+		if(casillaDestino->getColor()==m_color){
 			cout<<"Movimiento NO VALIDO: Una pieza del mismo color ocupa la posicion de destino."<<endl;
 			return false;
 		}
 	}
+
 	cout<<"Movimiento VALIDO."<<endl;
 	return true;
 }

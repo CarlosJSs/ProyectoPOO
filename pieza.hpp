@@ -21,7 +21,7 @@ class Pieza{
 		char getColor() const;
 		string getIcono();
 
-		virtual bool validarMovimiento(int fila, int columna, Pieza* casilla) = 0;
+		virtual bool validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]) = 0;
 
 	protected:
 		int m_columna;

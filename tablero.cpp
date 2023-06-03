@@ -139,9 +139,24 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 		cout<<endl<<"Movimiento NO VALIDO: Solo se pueden elegir piezas "<<(turno? "BLANCAS" : "NEGRAS");
 		return false;
 	}
-	
+
+	//------------------------------------No brincar piezas check----------------------------------------
+	//Nos apoyaremos de un tablero auxiliar
+	int auxTablero[8][8];
+
+	//Llenarlo de ceros (0)
+	for(int i=0;i<cantFilas;i+=1)
+		for(int j=0;j<cantColumnas;j+=1)
+			auxTablero[i][j]=0;
+
+	//Si hay una pieza, ponemos un 1
+	for(int i=0;i<cantPiezas;i+=1){
+		auxTablero[listaPiezas[i]->getFila()][listaPiezas[i]->getColumna()]=1;
+	}
+	//------------------------------------------------------------------------------
+
 	//Si la pieza no se puede mover asi
-	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino))){
+	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino,auxTablero))){
 		return false;
 	}
 	//Si la casilla Destino esta ocupada

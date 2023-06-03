@@ -9,7 +9,7 @@ class Peon: public Pieza{
 		Peon(int fila, int columna, char color);
 		~Peon();
 
-		virtual bool validarMovimiento(int fila, int columna, Pieza* casilla) override;
+		virtual bool validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]) override;
 
 	private:
 		bool primerMovimiento;

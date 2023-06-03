@@ -9,7 +9,7 @@ Peon::Peon(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='P';
 }
 
-bool Peon::validarMovimiento(int fila, int columna, Pieza* casilla){
+bool Peon::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
 	cout<<endl;
 	
 	//Destino == Origen
@@ -21,7 +21,7 @@ bool Peon::validarMovimiento(int fila, int columna, Pieza* casilla){
 	//El peon aun no se ha movido
 	if(primerMovimiento){
 		//Quiere moverse dos casillas y el destino no esta ocupado
-		if((m_columna==columna) && (m_fila-fila)==(m_color=='B'? -2 : 2) && casilla==nullptr){
+		if((m_columna==columna) && (m_fila-fila)==(m_color=='B'? -2 : 2) && casillaDestino==nullptr){
 			cout<<"Movimiento VALIDO."<<endl;
 			primerMovimiento=false;
 			return true;
@@ -37,18 +37,18 @@ bool Peon::validarMovimiento(int fila, int columna, Pieza* casilla){
 	//Se quiere mover de lado
 	if(abs(m_columna-columna)){
 		//Casilla destino sola (No puede comer)
-		if(casilla==nullptr){
+		if(casillaDestino==nullptr){
 			cout<<endl<<"Movimiento No VALIDO: Para comer, la casilla debe tener una pieza "<<(m_color=='B'? "NEGRA" : "BLANCA");
 			return false;
 		}
 
 		//Casilla destino ocupada por una pieza propia
-		if(casilla->getColor()==m_color){
+		if(casillaDestino->getColor()==m_color){
 			cout<<endl<<"Movimiento NO VALIDO: La casilla debe tener una pieza "<<(m_color=='B'? "NEGRA" : "BLANCA");
 			return false;
 		}
 		
-	}else if(casilla!=nullptr){ //Quiere moverse al frente (comiendo)
+	}else if(casillaDestino!=nullptr){ //Quiere moverse al frente (comiendo)
 		cout<<"Movimiento NO VALIDO: La casilla debe estar vacia."<<endl;
 		return false;		
 	}

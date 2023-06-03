@@ -7,7 +7,7 @@ struct Caballo: public Pieza{
 	Caballo();
 	Caballo(int fila, int columna, char color);
 
-	bool validarMovimiento(int fila, int columna, Pieza* casilla) override;
+	bool validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]) override;
 };
 
 #endif

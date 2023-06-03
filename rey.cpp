@@ -7,7 +7,7 @@ Rey::Rey(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='K';
 }
 
-bool Rey::validarMovimiento(int fila, int columna, Pieza* casilla){
+bool Rey::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
     cout<<endl;
 
     //Origen == Destino
@@ -23,8 +23,8 @@ bool Rey::validarMovimiento(int fila, int columna, Pieza* casilla){
     }
 
     //Intenta comer
-    if(casilla!=nullptr){
-		if(casilla->getColor()==m_color){
+    if(casillaDestino!=nullptr){
+		if(casillaDestino->getColor()==m_color){
 			cout<<"Movimiento NO VALIDO: Una pieza del mismo color ocupa la posicion de destino."<<endl;
 			return false;
 		}
