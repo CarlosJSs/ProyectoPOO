@@ -22,7 +22,7 @@ bool Alfil::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 		return false;
 	}
 
-	//Checar obstaculos en Diagonal
+	//---------------------------Checar obstaculos en Diagonal -----------------------------------
 	int flaActual=m_fila;
 	int clmnActual=m_columna;
 	int flaDiferencia=(fila>m_fila)? 1 : -1;
