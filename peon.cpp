@@ -21,7 +21,7 @@ bool Peon::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int T
 	//El peon aun no se ha movido
 	if(primerMovimiento){
 		//Quiere moverse dos casillas y el destino no esta ocupado
-		if((m_columna==columna) && (m_fila-fila)==(m_color=='B'? -2 : 2) && casillaDestino==nullptr){
+		if((m_columna==columna) && (m_fila-fila)==(m_color=='B'? -2 : 2) && casillaDestino==nullptr && TableroBin[fila+(m_color=='B'? -1 : 1)][columna]==0){
 			cout<<"Movimiento VALIDO."<<endl;
 			primerMovimiento=false;
 			return true;
