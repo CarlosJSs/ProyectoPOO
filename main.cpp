@@ -15,5 +15,7 @@ using namespace std;
 int main(){
 	Partida juego;
 	juego.inciarPartida();
+
+	getchar();
 	return 0;
 }

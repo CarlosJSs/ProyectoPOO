@@ -159,13 +159,63 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino,auxTablero))){
 		return false;
 	}
+	
 	//Si la casilla Destino esta ocupada
-	if(casillaDestino!=nullptr){
-		eliminarPieza(fila2,columna2);
+	try{
+		if(casillaDestino!=nullptr){
+			eliminarPieza(fila2,columna2);
+		}
+	}catch (const exception& e) {
+	    cout<<"Excepción capturada: "<<e.what()<<endl;
+	    return false;
 	}
+
+	//-------------------------------Coronar Peon---------------------------------
+	try {
+		if(casillaOrigen->getIcono()[0]=='P' && fila2==7 && turno){
+			eliminarPieza(fila2,columna2);
+			
+			int indicePeon=-1;
+			for(int i=0;i<cantPiezas;i++){
+				if(listaPiezas[i]==casillaOrigen){
+					indicePeon=i;
+					break;
+				}
+			}
+			if(indicePeon!=-1){
+				delete listaPiezas[indicePeon];
+				listaPiezas[indicePeon]=new Reina(fila2,columna2,'B');
+			}
+		}
+
+		if(casillaOrigen->getIcono()[0]=='P' && fila2==0 && !turno){
+			eliminarPieza(fila2,columna2);
+			
+			int indicePeon=-1;
+			for(int i=0;i<cantPiezas;i++){
+				if(listaPiezas[i]==casillaOrigen){
+					indicePeon=i;
+					break;
+				}
+			}
+			if(indicePeon!=-1){
+				delete listaPiezas[indicePeon];
+				listaPiezas[indicePeon]=new Reina(fila2,columna2,'N');
+			}
+		}
+
+	} catch (const exception& e) {
+	    cout<<"Excepción capturada: "<<e.what()<<endl;
+	    return false;
+	}
+
+
+	
+	//-----------------------------------------------------------------------------
 
 	//Para los demas casos
 	casillaOrigen->setFila(fila2);
 	casillaOrigen->setColumna(columna2);
+
 	return true;
 }
