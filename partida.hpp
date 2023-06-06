@@ -15,6 +15,7 @@ struct Partida{
     string casillaOrigen;
     string casillaDestino;
     bool turno; //  true:Blancas, false:Negras
+    int flagGame;
 };
 
 #endif

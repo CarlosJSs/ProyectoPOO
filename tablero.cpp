@@ -173,7 +173,7 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	//-------------------------------Coronar Peon---------------------------------
 	try {
 		if(casillaOrigen->getIcono()[0]=='P' && fila2==7 && turno){
-			eliminarPieza(fila2,columna2);
+			//eliminarPieza(fila2,columna2);
 			
 			int indicePeon=-1;
 			for(int i=0;i<cantPiezas;i++){
@@ -189,7 +189,7 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 		}
 
 		if(casillaOrigen->getIcono()[0]=='P' && fila2==0 && !turno){
-			eliminarPieza(fila2,columna2);
+			//eliminarPieza(fila2,columna2);
 			
 			int indicePeon=-1;
 			for(int i=0;i<cantPiezas;i++){
@@ -218,4 +218,20 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	casillaOrigen->setColumna(columna2);
 
 	return true;
+}
+bool Tablero::verificarReyB(){
+	for(int i=0; i<cantPiezas; i+=1){
+		if(listaPiezas[i]->getIcono()=="KB"){
+			return true;
+		}
+	}
+	return false;
+}
+bool Tablero::verificarReyN(){
+	for(int i=0; i<cantPiezas; i+=1){
+		if(listaPiezas[i]->getIcono()=="KN"){
+			return true;
+		}
+	}
+	return false;
 }

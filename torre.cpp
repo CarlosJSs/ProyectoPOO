@@ -1,9 +1,11 @@
 #include "torre.hpp"
 
 Torre::Torre(): Pieza(){
+	primerMovimiento=true;
 	m_icono[0]='T';
 }
 Torre::Torre(int fila, int columna, char color): Pieza(fila,columna,color){
+	primerMovimiento=true;
 	m_icono[0]='T';
 }
 

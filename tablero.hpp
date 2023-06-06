@@ -20,6 +20,8 @@ class Tablero{
 		Pieza* buscarPieza(int fila, int columna);
 		void eliminarPieza(int fila, int columna);
 		bool moverPieza(int fila1, int columna1, int fila2, int columna2, bool turno);
+		bool verificarReyB();
+		bool verificarReyN();
 
 	private:
 		unsigned cantColumnas;

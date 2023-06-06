@@ -1,11 +1,14 @@
 #include "rey.hpp"
 
 Rey::Rey(): Pieza(){
+	primerMovimiento=true;
 	m_icono[0]='K';
 }
 Rey::Rey(int fila, int columna, char color): Pieza(fila,columna,color){
+	primerMovimiento=true;
 	m_icono[0]='K';
 }
+Rey::~Rey(){}
 
 bool Rey::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
     cout<<endl;

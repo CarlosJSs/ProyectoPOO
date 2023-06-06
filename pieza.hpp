@@ -12,6 +12,7 @@ class Pieza{
 	public:
 		Pieza();
 		Pieza(int fila, int columna, char color);
+		virtual ~Pieza() = default;
 
 		void setColumna(int columna);
 		void setFila(int fila);

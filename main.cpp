@@ -6,10 +6,10 @@ using namespace std;
 
 /*
 	Integrantes:
-		Ana
-		Paola
-		Carlos
-		David
+		Ana Michelle Conejo Sanchez
+		Paola Estefania Vazquez Guevara
+		David Zapien Zaavedra
+		Carlos Eduardo Lopez Gutierrez
 */
 
 int main(){
