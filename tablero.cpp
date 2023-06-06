@@ -184,7 +184,8 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 			}
 			if(indicePeon!=-1){
 				delete listaPiezas[indicePeon];
-				listaPiezas[indicePeon]=new Reina(fila2,columna2,'B');
+				listaPiezas[indicePeon]=new Reina(fila1,columna1,'B');
+				casillaOrigen=listaPiezas[indicePeon];
 			}
 		}
 
@@ -200,7 +201,8 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 			}
 			if(indicePeon!=-1){
 				delete listaPiezas[indicePeon];
-				listaPiezas[indicePeon]=new Reina(fila2,columna2,'N');
+				listaPiezas[indicePeon]=new Reina(fila1,columna1,'N');
+				casillaOrigen=listaPiezas[indicePeon];
 			}
 		}
 

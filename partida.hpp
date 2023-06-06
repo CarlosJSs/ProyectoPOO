@@ -3,19 +3,22 @@
 
 #include "tablero.hpp"
 
-struct Partida{
-    Partida();
-    
-    void anunciarGanador() const;
-    void realizarMovimiento();
-    void inciarPartida();
+class Partida{
+    public:
+        Partida();
+        ~Partida() = default;
+        
+        void anunciarGanador() const;
+        void realizarMovimiento();
+        void inciarPartida();
 
-    Tablero m_tablero;
-    int opcion;
-    string casillaOrigen;
-    string casillaDestino;
-    bool turno; //  true:Blancas, false:Negras
-    int flagGame;
+    private:
+        Tablero m_tablero;
+        int opcion;
+        string casillaOrigen;
+        string casillaDestino;
+        bool turno; //  true:Blancas, false:Negras
+        int flagGame;
 };
 
 #endif

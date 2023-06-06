@@ -36,7 +36,7 @@ void Partida::realizarMovimiento(){
     }
 }
 void Partida::inciarPartida(){
-    cout<<endl<<"Inicio de la partdida..."<<endl;
+    cout<<endl<<"\t\t~ ~ ~ ~ ~ I N I C I O     D E     L A     P A R T I D A ~ ~ ~ ~ ~"<<endl;
 
     do{
         m_tablero.imprimirTablero();
