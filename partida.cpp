@@ -8,14 +8,14 @@ Partida::Partida(){
     
 void Partida::anunciarGanador() const{
     cout<<endl<<endl;
-    cout<<endl<<"\t\t\t~ ~ ~ ~ ~ G A N A D O R :     P I E Z A S     "<<(turno? "B L A N C A S" : "N E G R A S")<<" ~ ~ ~ ~ ~";
+    cout<<"\t\t\t~ ~ ~ ~ ~ G A N A D O R :     P I E Z A S     "<<(turno? "B L A N C A S" : "N E G R A S")<<" ~ ~ ~ ~ ~";
     cout<<endl<<endl;
 }
 void Partida::realizarMovimiento(){
-    cout<<endl<<"Movimiento:";
-    cout<<endl<<"\tCasilla de Origen: ";
+    cout<<endl<<"\t\tMovimiento:";
+    cout<<endl<<"\t\t\tCasilla de Origen: ";
     cin>>casillaOrigen;
-    cout<<"\tCasilla de Destino: ";
+    cout<<"\t\t\tCasilla de Destino: ";
     cin>>casillaDestino;
 
     if(m_tablero.posicionValida(casillaOrigen) && m_tablero.posicionValida(casillaDestino)){
@@ -23,11 +23,8 @@ void Partida::realizarMovimiento(){
 
             if(!m_tablero.verificarReyB() || !m_tablero.verificarReyN()){
                 flagGame=0;
-    
-                //m_tablero.imprimirTablero();
-
-                cout<<endl<<"\t\t\t~ ~ ~ R E Y     "<<(!m_tablero.verificarReyB()? "B L A N C O" : "N E G R O")<<"     E L I M I N A D O ~ ~ ~";
-
+                m_tablero.imprimirTablero();
+                cout<<endl<<"\t\t\t\t~ ~ ~ R E Y     "<<(!m_tablero.verificarReyB()? "B L A N C O" : "N E G R O")<<"     E L I M I N A D O ~ ~ ~";
                 anunciarGanador();
             }
 
@@ -43,14 +40,14 @@ void Partida::inciarPartida(){
     do{
         m_tablero.imprimirTablero();
 
-        cout<<endl<<"Turno de las piezas "<<(turno? "BLANCAS" : "NEGRAS")<<".";
-        cout<<endl<<"\tOpciones:";
-        cout<<endl<<"\t\t - 1: Mover una pieza.";
-        cout<<endl<<"\t\t - 0: Rendirse.";
+        cout<<endl<<"\t~ ~ ~ ~ ~ Turno de las piezas   "<<(turno? "B L A N C A S" : "N E G R A S")<<"   ~ ~ ~ ~ ~"<<endl;
+        cout<<endl<<"\t\tO P C I O N E S :";
+        cout<<endl<<"\t\t\t -> 1: MOVER una pieza.";
+        cout<<endl<<"\t\t\t -> 0: RENDIRSE.";
         cout<<endl<<endl;
 
         do{
-            cout<<"\tDigite la opcion deseada: ";
+            cout<<"\t\tDigite la opcion deseada: ";
             cin>>opcion;
         }while(opcion!=0 && opcion!=1);
 
@@ -59,16 +56,16 @@ void Partida::inciarPartida(){
                 realizarMovimiento();
                 break;
             case 0:
-                cout<<endl<<"Las piezas "<<(turno? "BLANCAS" : "NEGRAS")<<" se han rendido.";
+                cout<<endl<<endl<<"\t\t~ ~ ~ ~ ~ Las piezas   "<<(turno? "B L A N C A S" : "N E G R A S")<<"   se han   R E N D I D O ~ ~ ~ ~ ~";
                 turno=!turno;
                 anunciarGanador();
                 break;
             default:
-                cout<<endl<<"Opcion NO VALIDA: intente de nuevo.";
+                cout<<endl<<"\t\t* * * * * Opcion   N O    V A L I D A :   intente de nuevo * * * * *";
                 break;
         }
 
     }while(flagGame && opcion!=0);
 
-    cout<<"\t\t\t\t~ ~ ~ ~ ~ F I N     D E L     J U E G O ~ ~ ~ ~ ~"<<endl;
+    cout<<"\t\t\t\t~ ~ ~ ~ ~ F I N     D E L     J U E G O ~ ~ ~ ~ ~"<<endl<<endl<<endl;
 }

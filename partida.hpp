@@ -2,6 +2,9 @@
 #define PARTIDA_HPP
 
 #include "tablero.hpp"
+#include <iostream>
+
+using namespace std;
 
 class Partida{
     public:

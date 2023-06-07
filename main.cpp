@@ -1,8 +1,4 @@
-#include "pieza.hpp"
-#include "tablero.hpp"
 #include "partida.hpp"
-
-using namespace std;
 
 /*
 	Integrantes:
@@ -15,7 +11,5 @@ using namespace std;
 int main(){
 	Partida juego;
 	juego.inciarPartida();
-
-	getchar();
 	return 0;
 }

@@ -14,20 +14,20 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 
 	//Origen == Destino
 	if((m_fila==fila) && (m_columna==columna)){
-		cout<<"Movimiento NO VALIDO: La posicion de destino no puede ser igual a la posicion actual de la pieza."<<endl;
+		cout<<"\t* * * * * Movimiento   N O   V A L I D O :   La posicion de destino no puede ser igual a la posicion actual de la pieza * * * * *"<<endl;
 		return false;
 	}
 
 	//Movimiento diferente a +
 	if((m_fila==fila)==(m_columna==columna)){
-		cout<<"Movimiento NO VALIDO: La torre no puede avanzar a esa posicion."<<endl;
+		cout<<"\t* * * * * Movimiento   N O   V A L I D O :   La Torre no puede avanzar a esa posicion * * * * *"<<endl;
 		return false;
 	}
 	
 	//Quiere comer una pieza propia
 	if(casillaDestino!=nullptr){
 		if(casillaDestino->getColor()==m_color){
-			cout<<"Movimiento NO VALIDO: Una pieza del mismo color ocupa la posicion de destino."<<endl;
+			cout<<"\t* * * * * Movimiento   N O   V A L I D O :   Una pieza del mismo color ocupa la posicion de destino * * * * *"<<endl;
 			return false;
 		}
 	}
@@ -39,7 +39,7 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 
 		for(int clmnActual=clmnIni; clmnActual<=clmnFin; clmnActual+=1){
 			if(TableroBin[m_fila][clmnActual]==1){
-				cout<<"Movimiento NO VALIDO: El Caballo es la unica pieza que puede brincar otras piezas."<<endl;
+				cout<<"\t* * * * * Movimiento   N O   V A L I D O :   El Caballo es la unica pieza que puede brincar otras piezas * * * * *"<<endl;
 				return false;
 			}
 		}
@@ -52,7 +52,7 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 
 		for(int flaActual=flaIni; flaActual<=flaFin; flaActual+=1){
 			if(TableroBin[flaActual][m_columna]==1){
-				cout<<"Movimiento NO VALIDO: El Caballo es la unica pieza que puede brincar otras piezas."<<endl;
+				cout<<"\t* * * * * Movimiento   N O   V A L I D O :   El Caballo es la unica pieza que puede brincar otras piezas * * * * *"<<endl;
 				return false;
 			}
 		}
@@ -94,7 +94,7 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 
 
 	//Para todos los demas casos
-	cout<<"Movimiento VALIDO."<<endl;
+	cout<<"\t\tMovimiento   V A L I D O ."<<endl;
     primerMovimiento=false;
 	return true;
 }

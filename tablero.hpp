@@ -9,7 +9,6 @@
 #include "rey.hpp"
 #include "torre.hpp"
 
-
 class Tablero{
 	public:
 		Tablero();

@@ -15,14 +15,14 @@ bool Rey::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int Ta
 
     //Origen == Destino
 	if((m_fila==fila) && (m_columna==columna)){
-		cout<<"Movimiento NO VALIDO: La posicion de destino no puede ser igual a la posicion actual de la pieza."<<endl;
+		cout<<"\t* * * * * Movimiento   N O   V A L I D O :   La posicion de destino no puede ser igual a la posicion actual de la pieza * * * * *"<<endl;
 		return false;
 	}
 
     //Intenta comer
     if(casillaDestino!=nullptr){
 		if(casillaDestino->getColor()==m_color){
-			cout<<"Movimiento NO VALIDO: Una pieza del mismo color ocupa la posicion de destino."<<endl;
+			cout<<"\t* * * * * Movimiento   N O   V A L I D O :   Una pieza del mismo color ocupa la posicion de destino * * * * *"<<endl;
 			return false;
 		}
 	}
@@ -71,13 +71,13 @@ bool Rey::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int Ta
     		return true;
     	}
 
-        cout<<"Movimiento NO VALIDO: El Rey no puede avanzar a esa posicion"<<endl;
+			cout<<"\t* * * * * Movimiento   N O   V A L I D O :   El Caballo es la unica pieza que puede brincar otras piezas * * * * *"<<endl;
 		return false;
     }
 
 
     //Para todos los demas casos
-    cout<<"Movimiento VALIDO.";
+	cout<<"\t\tMovimiento   V A L I D O ."<<endl;
     primerMovimiento=false;
     return true;
 }

@@ -90,7 +90,6 @@ void Tablero::imprimirTablero(){
 	for(int i=0; i<cantColumnas;i+=1)
 		cout<<setfill(' ')<<setw(5)<<left<<char('A'+i);
 	cout<<' '<<endl;
-
 }
 bool Tablero::posicionValida(string pos) const{
 	if(pos.size()!=2) return false;
@@ -131,12 +130,12 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 
 	//Origen es una casilla sola
 	if(casillaOrigen==nullptr){
-		cout<<endl<<"Movimiento NO VALIDO: No hay una pieza en la posicion de inicio.";
+		cout<<endl<<"\t* * * * * Movimiento   N O   V A L I D O :   No hay una pieza en la posicion de inicio * * * * *"<<endl;
 		return false;
 	}
 	//Quiere mover una pieza agena
 	if(casillaOrigen->getColor()!=(turno? 'B':'N')){
-		cout<<endl<<"Movimiento NO VALIDO: Solo se pueden elegir piezas "<<(turno? "BLANCAS" : "NEGRAS");
+		cout<<endl<<"\t* * * * * Movimiento   N O   V A L I D O :   Solo se pueden elegir piezas "<<(turno? "BLANCAS" : "NEGRAS")<<" * * * * *"<<endl;
 		return false;
 	}
 
@@ -245,14 +244,14 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 
 			unsigned eleccion=0;
 
-			cout<<"~~~CORONAR PEON~~~"<<endl;
-			cout<<"Seleccione la pieza por la cual cambiar su peon:"<<endl;
-			cout<<"0.- Ninguna (Peon)";
-			cout<<"1.- Reina";
-			cout<<"2.- Torre";
-			cout<<"3.- Alfil";
-			cout<<"4.- Caballo";
-			cout<<"Su eleccion: ";
+			cout<<endl<<"\t~ ~ ~ ~ ~ C O R O N A R    P E O N ~ ~ ~ ~ ~"<<endl<<endl;
+			cout<<"\t\tSeleccione la nueva pieza:"<<endl;
+			cout<<"\t\t\t0.- Ninguna (Peon)"<<endl;
+			cout<<"\t\t\t1.- Reina"<<endl;
+			cout<<"\t\t\t2.- Torre"<<endl;
+			cout<<"\t\t\t3.- Alfil"<<endl;
+			cout<<"\t\t\t4.- Caballo"<<endl<<endl;
+			cout<<"\t\t\tSu eleccion: ";
 
 			cin>>eleccion;
 
@@ -296,14 +295,14 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 
 			unsigned eleccion=0;
 
-			cout<<"~~~CORONAR PEON~~~"<<endl;
-			cout<<"Seleccione la pieza por la cual cambiar su peon:"<<endl;
-			cout<<"0.- Ninguna (Peon)";
-			cout<<"1.- Reina";
-			cout<<"2.- Torre";
-			cout<<"3.- Alfil";
-			cout<<"4.- Caballo";
-			cout<<"Su eleccion: ";
+			cout<<endl<<"\t~ ~ ~ ~ ~ C O R O N A R    P E O N ~ ~ ~ ~ ~"<<endl<<endl;
+			cout<<"\t\tSeleccione la nueva pieza:"<<endl;
+			cout<<"\t\t\t0.- Ninguna (Peon)"<<endl;
+			cout<<"\t\t\t1.- Reina"<<endl;
+			cout<<"\t\t\t2.- Torre"<<endl;
+			cout<<"\t\t\t3.- Alfil"<<endl;
+			cout<<"\t\t\t4.- Caballo"<<endl<<endl;
+			cout<<"\t\t\tSu eleccion: ";
 
 			cin>>eleccion;
 
