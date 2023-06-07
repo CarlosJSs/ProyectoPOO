@@ -155,7 +155,6 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	}
 	//------------------------------------------------------------------------------
 
-
 	//Si la pieza no se puede mover asi
 	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino,auxTablero))){
 		return false;
@@ -168,7 +167,6 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	
 
 	//-------------------------------Hacer ENROQUE--------------------------------
-
 	//Para las blancas
 	if(casillaOrigen->getIcono()=="KB" && turno){
 
@@ -228,8 +226,8 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 			
 		}
 	}
-
 	//----------------------------------------------------------------------------
+
 
 	//-------------------------------Coronar Peon---------------------------------
 	if(casillaOrigen->getIcono()[0]=='P' && fila2==7 && turno){
@@ -244,7 +242,41 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 		}
 		if(indicePeon!=-1){
 			delete listaPiezas[indicePeon];
-			listaPiezas[indicePeon]=new Reina(fila1,columna1,'B');
+
+			unsigned eleccion=0;
+
+			cout<<"~~~CORONAR PEON~~~"<<endl;
+			cout<<"Seleccione la pieza por la cual cambiar su peon:"<<endl;
+			cout<<"0.- Ninguna (Peon)";
+			cout<<"1.- Reina";
+			cout<<"2.- Torre";
+			cout<<"3.- Alfil";
+			cout<<"4.- Caballo";
+			cout<<"Su eleccion: ";
+
+			cin>>eleccion;
+
+			switch(eleccion){
+				case 0:
+					listaPiezas[indicePeon]=new Peon(fila1,columna1,'B');
+					break;
+				case 1:
+					listaPiezas[indicePeon]=new Reina(fila1,columna1,'B');
+					break;
+				case 2:
+					listaPiezas[indicePeon]=new Torre(fila1,columna1,'B');
+					break;
+				case 3:
+					listaPiezas[indicePeon]=new Alfil(fila1,columna1,'B');
+					break;
+				case 4:
+					listaPiezas[indicePeon]=new Caballo(fila1,columna1,'B');
+					break;
+				default:
+					listaPiezas[indicePeon]=new Peon(fila1,columna1,'B');
+					break;
+			}
+
 			casillaOrigen=listaPiezas[indicePeon];
 		}
 	}
@@ -261,7 +293,41 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 		}
 		if(indicePeon!=-1){
 			delete listaPiezas[indicePeon];
-			listaPiezas[indicePeon]=new Reina(fila1,columna1,'N');
+
+			unsigned eleccion=0;
+
+			cout<<"~~~CORONAR PEON~~~"<<endl;
+			cout<<"Seleccione la pieza por la cual cambiar su peon:"<<endl;
+			cout<<"0.- Ninguna (Peon)";
+			cout<<"1.- Reina";
+			cout<<"2.- Torre";
+			cout<<"3.- Alfil";
+			cout<<"4.- Caballo";
+			cout<<"Su eleccion: ";
+
+			cin>>eleccion;
+
+			switch(eleccion){
+				case 0:
+					listaPiezas[indicePeon]=new Peon(fila1,columna1,'N');
+					break;
+				case 1:
+					listaPiezas[indicePeon]=new Reina(fila1,columna1,'N');
+					break;
+				case 2:
+					listaPiezas[indicePeon]=new Torre(fila1,columna1,'N');
+					break;
+				case 3:
+					listaPiezas[indicePeon]=new Alfil(fila1,columna1,'N');
+					break;
+				case 4:
+					listaPiezas[indicePeon]=new Caballo(fila1,columna1,'N');
+					break;
+				default:
+					listaPiezas[indicePeon]=new Peon(fila1,columna1,'N');
+					break;
+			}
+
 			casillaOrigen=listaPiezas[indicePeon];
 		}
 	}
