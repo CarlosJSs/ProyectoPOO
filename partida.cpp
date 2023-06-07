@@ -24,6 +24,8 @@ void Partida::realizarMovimiento(){
             if(!m_tablero.verificarReyB() || !m_tablero.verificarReyN()){
                 flagGame=0;
     
+                //m_tablero.imprimirTablero();
+
                 cout<<endl<<"\t\t\t~ ~ ~ R E Y     "<<(!m_tablero.verificarReyB()? "B L A N C O" : "N E G R O")<<"     E L I M I N A D O ~ ~ ~";
 
                 anunciarGanador();

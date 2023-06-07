@@ -10,6 +10,7 @@ class Torre: public Pieza{
 		~Torre() override = default;
 
 		bool validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]) override;
+		
 	protected:
 		bool primerMovimiento;
 };

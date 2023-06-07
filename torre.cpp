@@ -58,7 +58,43 @@ bool Torre::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int 
 		}
 	}
 
+	//Permitir ENROQUE ========================================================
+	if(primerMovimiento){
+
+		//Para las blancas -----------------------------------------------------
+		if(columna==5 && fila==0){//Enroque Corto
+			if(TableroBin[0][5]==0 && TableroBin[0][6]==0){
+				primerMovimiento=false;
+				return true;
+			}
+		}
+		if(columna==3 && fila==0){//Enroque largo
+			if(TableroBin[0][1]==0 && TableroBin[0][2]==0 && TableroBin[0][3]){
+				primerMovimiento=false;
+				return true;
+			}
+		}
+
+		//Para las negras ------------------------------------------------------
+		if(columna==5 && fila==7){//Enroque Corto
+			if(TableroBin[7][5]==0 && TableroBin[7][6]==0){
+				primerMovimiento=false;
+				return true;
+			}
+		}
+		if(columna==3 && fila==7){//Enroque largo
+			if(TableroBin[7][1]==0 && TableroBin[7][2]==0 && TableroBin[7][3]){
+				primerMovimiento=false;
+				return true;
+			}
+		}
+
+	}
+	//============================================================================
+
+
 	//Para todos los demas casos
 	cout<<"Movimiento VALIDO."<<endl;
+    primerMovimiento=false;
 	return true;
 }

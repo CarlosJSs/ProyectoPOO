@@ -155,64 +155,116 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 	}
 	//------------------------------------------------------------------------------
 
+
 	//Si la pieza no se puede mover asi
 	if(!(casillaOrigen->validarMovimiento(fila2,columna2,casillaDestino,auxTablero))){
 		return false;
 	}
 	
 	//Si la casilla Destino esta ocupada
-	try{
-		if(casillaDestino!=nullptr){
-			eliminarPieza(fila2,columna2);
-		}
-	}catch (const exception& e) {
-	    cout<<"Excepción capturada: "<<e.what()<<endl;
-	    return false;
+	if(casillaDestino!=nullptr){
+		eliminarPieza(fila2,columna2);
 	}
+	
+
+	//-------------------------------Hacer ENROQUE--------------------------------
+
+	//Para las blancas
+	if(casillaOrigen->getIcono()=="KB" && turno){
+
+		//Enroque corto
+		if(fila2==0 && columna2==6){
+			Pieza* auxTorre=buscarPieza(0,7);
+
+			if(auxTorre->validarMovimiento(0,5,buscarPieza(0,5),auxTablero)){
+				if(casillaOrigen->validarMovimiento(0,6,casillaDestino,auxTablero)){
+					auxTorre->setFila(0);
+					auxTorre->setColumna(5);
+				}
+			}
+
+		}
+
+		//Enroque Largo
+		if(fila2==0 && columna2==2){
+			Pieza* auxTorre=buscarPieza(0,0);
+
+			if(auxTorre->validarMovimiento(0,3,buscarPieza(0,3),auxTablero)){
+				if(casillaOrigen->validarMovimiento(0,2,casillaDestino,auxTablero)){
+					auxTorre->setFila(0);
+					auxTorre->setColumna(3);
+				}
+			}
+
+		}
+	}
+
+	//Para las negras
+	if(casillaOrigen->getIcono()=="KN" && !turno){
+
+		//Enroque corto
+		if(fila2==7 && columna2==6){
+			Pieza* auxTorre=buscarPieza(7,7);
+
+			if(auxTorre->validarMovimiento(7,5,buscarPieza(7,5),auxTablero)){
+				if(casillaOrigen->validarMovimiento(7,6,casillaDestino,auxTablero)){
+					auxTorre->setFila(7);
+					auxTorre->setColumna(5);
+				}
+			}
+
+		}
+
+		//Enroque Largo
+		if(fila2==7 && columna2==2){
+			Pieza* auxTorre=buscarPieza(7,0);
+
+			if(auxTorre->validarMovimiento(7,3,buscarPieza(7,3),auxTablero)){
+				if(casillaOrigen->validarMovimiento(7,2,casillaDestino,auxTablero)){
+					auxTorre->setFila(7);
+					auxTorre->setColumna(3);
+				}
+			}
+			
+		}
+	}
+
+	//----------------------------------------------------------------------------
 
 	//-------------------------------Coronar Peon---------------------------------
-	try {
-		if(casillaOrigen->getIcono()[0]=='P' && fila2==7 && turno){
-			//eliminarPieza(fila2,columna2);
-			
-			int indicePeon=-1;
-			for(int i=0;i<cantPiezas;i++){
-				if(listaPiezas[i]==casillaOrigen){
-					indicePeon=i;
-					break;
-				}
-			}
-			if(indicePeon!=-1){
-				delete listaPiezas[indicePeon];
-				listaPiezas[indicePeon]=new Reina(fila1,columna1,'B');
-				casillaOrigen=listaPiezas[indicePeon];
+	if(casillaOrigen->getIcono()[0]=='P' && fila2==7 && turno){
+		//eliminarPieza(fila2,columna2);
+		
+		int indicePeon=-1;
+		for(int i=0;i<cantPiezas;i++){
+			if(listaPiezas[i]==casillaOrigen){
+				indicePeon=i;
+				break;
 			}
 		}
-
-		if(casillaOrigen->getIcono()[0]=='P' && fila2==0 && !turno){
-			//eliminarPieza(fila2,columna2);
-			
-			int indicePeon=-1;
-			for(int i=0;i<cantPiezas;i++){
-				if(listaPiezas[i]==casillaOrigen){
-					indicePeon=i;
-					break;
-				}
-			}
-			if(indicePeon!=-1){
-				delete listaPiezas[indicePeon];
-				listaPiezas[indicePeon]=new Reina(fila1,columna1,'N');
-				casillaOrigen=listaPiezas[indicePeon];
-			}
+		if(indicePeon!=-1){
+			delete listaPiezas[indicePeon];
+			listaPiezas[indicePeon]=new Reina(fila1,columna1,'B');
+			casillaOrigen=listaPiezas[indicePeon];
 		}
-
-	} catch (const exception& e) {
-	    cout<<"Excepción capturada: "<<e.what()<<endl;
-	    return false;
 	}
 
-
-	
+	if(casillaOrigen->getIcono()[0]=='P' && fila2==0 && !turno){
+		//eliminarPieza(fila2,columna2);
+		
+		int indicePeon=-1;
+		for(int i=0;i<cantPiezas;i++){
+			if(listaPiezas[i]==casillaOrigen){
+				indicePeon=i;
+				break;
+			}
+		}
+		if(indicePeon!=-1){
+			delete listaPiezas[indicePeon];
+			listaPiezas[indicePeon]=new Reina(fila1,columna1,'N');
+			casillaOrigen=listaPiezas[indicePeon];
+		}
+	}
 	//-----------------------------------------------------------------------------
 
 	//Para los demas casos
