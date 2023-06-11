@@ -13,7 +13,7 @@ class Partida{
         
         void anunciarGanador() const;
         void realizarMovimiento();
-        void inciarPartida();
+        void iniciarPartida();
 
     private:
         Tablero m_tablero;

@@ -8,7 +8,7 @@ Partida::Partida(){
     
 void Partida::anunciarGanador() const{
     cout<<endl<<endl;
-    cout<<"\t\t\t~ ~ ~ ~ ~ G A N A D O R :     P I E Z A S     "<<(turno? "B L A N C A S" : "N E G R A S")<<" ~ ~ ~ ~ ~";
+    cout<<"\t\t\t~ ~ ~ ~ ~    G A N A D O R :     P I E Z A S     "<<(turno? "B L A N C A S" : "N E G R A S")<<"    ~ ~ ~ ~ ~";
     cout<<endl<<endl;
 }
 void Partida::realizarMovimiento(){
@@ -34,7 +34,7 @@ void Partida::realizarMovimiento(){
         cout<<endl<<"Los valores introducidos NO SON VALIDOS.";
     }
 }
-void Partida::inciarPartida(){
+void Partida::iniciarPartida(){
     cout<<endl<<"\t\t~ ~ ~ ~ ~ I N I C I O     D E     L A     P A R T I D A ~ ~ ~ ~ ~"<<endl;
 
     do{
@@ -56,7 +56,7 @@ void Partida::inciarPartida(){
                 realizarMovimiento();
                 break;
             case 0:
-                cout<<endl<<endl<<"\t\t~ ~ ~ ~ ~ Las piezas   "<<(turno? "B L A N C A S" : "N E G R A S")<<"   se han   R E N D I D O ~ ~ ~ ~ ~";
+                cout<<endl<<endl<<"\t\t~ ~ ~ ~ ~    Las piezas   "<<(turno? "B L A N C A S" : "N E G R A S")<<"   se han   R E N D I D O    ~ ~ ~ ~ ~";
                 turno=!turno;
                 anunciarGanador();
                 break;
@@ -67,5 +67,5 @@ void Partida::inciarPartida(){
 
     }while(flagGame && opcion!=0);
 
-    cout<<"\t\t\t\t~ ~ ~ ~ ~ F I N     D E L     J U E G O ~ ~ ~ ~ ~"<<endl<<endl<<endl;
+    cout<<"\t\t\t\t~ ~ ~ ~ ~    F I N     D E L     J U E G O    ~ ~ ~ ~ ~"<<endl<<endl<<endl;
 }
