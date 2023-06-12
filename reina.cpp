@@ -1,12 +1,18 @@
 #include "reina.hpp"
 
+//Inicializa la pieza como una Reina
 Reina::Reina(): Pieza(){
 	m_icono[0]='Q';
 }
+//Al instanciarla le asigna una posicion (fila y columna) y un equipo (color)
 Reina::Reina(int fila, int columna, char color): Pieza(fila,columna,color){
 	m_icono[0]='Q';
 }
 
+/*Validar que el movimiento indicado coincida con las reglas para la REINA
+		->Recibe la posicion de la casilla de destino (fila y columna), el apuntador a la casilla destino (objeto tipo pieza)
+			y una matriz de 8x8 que representa los lugares libres y ocupados en el tablero.
+		->Regresa true si la pieza se puede mover a el destino indicado y false en caso de que no. */
 bool Reina::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
 	cout<<endl;
 

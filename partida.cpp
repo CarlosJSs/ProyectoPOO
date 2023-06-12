@@ -1,16 +1,22 @@
 #include "partida.hpp"
 
+//Inicializar la partida correctamente
 Partida::Partida(){
     turno=true;
     opcion=0;
     flagGame=1;
 }
-    
+
+//Imprimir el ganador del juego de acuerdo al valor de "turno"
 void Partida::anunciarGanador() const{
     cout<<endl<<endl;
     cout<<"\t\t\t~ ~ ~ ~ ~    G A N A D O R :     P I E Z A S     "<<(turno? "B L A N C A S" : "N E G R A S")<<"    ~ ~ ~ ~ ~";
     cout<<endl<<endl;
 }
+
+/*Realizar el movimiento indcado
+        Hara las validaciones necesarias dependiendo de la pieza y el estado del tablero,
+        en caso de estar correcto cambia de turno */
 void Partida::realizarMovimiento(){
     cout<<endl<<"\t\tMovimiento:";
     cout<<endl<<"\t\t\tCasilla de Origen: ";
@@ -34,6 +40,9 @@ void Partida::realizarMovimiento(){
         cout<<endl<<"Los valores introducidos NO SON VALIDOS.";
     }
 }
+
+/*Inicia la partida de Ajedrez
+        Muestra el tablero y conforme va avanzando el juego nos da la opcion de seguir jugando o rendirnos */
 void Partida::iniciarPartida(){
     cout<<endl<<"\t\t~ ~ ~ ~ ~ I N I C I O     D E     L A     P A R T I D A ~ ~ ~ ~ ~"<<endl;
 

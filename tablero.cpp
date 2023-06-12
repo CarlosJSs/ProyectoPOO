@@ -1,5 +1,8 @@
 #include "tablero.hpp"
 
+/*Inicializar el Tablero
+		Define un Arreglo de apuntadores a objetos tipo pieza para almacer las piezas de la partida
+*/
 Tablero::Tablero(): cantColumnas(8), cantFilas(8), cantPiezas(32){
 	
 	//Creamos un arreglo apuntadores a objetos tipo Pieza
@@ -37,6 +40,7 @@ Tablero::Tablero(): cantColumnas(8), cantFilas(8), cantPiezas(32){
         listaPiezas[17+2*i] = new Peon(6,i,'N');
     }
 }
+//Libera la memoria de cada apuntador y de la lista de piezas
 Tablero::~Tablero(){
 	//Liberamos la memoria asignada para cada pieza
 	for(int i=0;i<cantPiezas;i+=1){
@@ -47,6 +51,8 @@ Tablero::~Tablero(){
 	delete[] listaPiezas;
 }
 
+/*Imprimir el Tablero
+		Muestra en pantalla, de forma grafica el tablero y las piezas en este*/
 void Tablero::imprimirTablero(){
 	//Nuestro tablero sera una Matriz
 	string myTablero[cantFilas][cantColumnas];
@@ -91,12 +97,20 @@ void Tablero::imprimirTablero(){
 		cout<<setfill(' ')<<setw(5)<<left<<char('A'+i);
 	cout<<' '<<endl;
 }
+
+/*Validar si la posicion esta dentro del tablero
+		->Recibe la posicion (Casilla) en forma de string y valida si esta dentro del tablero
+		->Si esta dentro del rango regresa true, si no, false */
 bool Tablero::posicionValida(string pos) const{
 	if(pos.size()!=2) return false;
 	if(!(pos[1]>='1' && pos[1]<'1'+cantFilas)) return false;
 	if(!(pos[0]>='A' && pos[0]<'A'+cantColumnas)) return false;
 	return true;
 }
+
+/*Buscar una pieza en la lista por su posicion
+		->Recibe la posicion de la pieza que se busca y la evalua con la lista de piezas
+		->Si la encuentra regresa el puntero, si no, regresa nullptr */
 Pieza* Tablero::buscarPieza(int fila, int columna){
 	for(int i=0;i<cantPiezas;i+=1)
 		if(listaPiezas[i]->getFila()==fila && listaPiezas[i]->getColumna()==columna)
@@ -104,6 +118,10 @@ Pieza* Tablero::buscarPieza(int fila, int columna){
 
 	return nullptr;
 }
+
+/*Eliminar pieza de la lista
+		->Recibe la posicion de una cierta pieza, la busca y procede a eliminarla de la lista,
+			ademas, actualiza contadores y libera la memoria de dicha pieza */
 void Tablero::eliminarPieza(int fila, int columna){
 	Pieza* eliminada=buscarPieza(fila,columna);
 
@@ -124,6 +142,12 @@ void Tablero::eliminarPieza(int fila, int columna){
 		delete eliminada;
 	}
 }
+
+/*Efectuar movimiento en el Tablero
+		->Recibe la posicion de origen (fila, columna), la posicion de destino (fila columna) y el jugador en turno.
+				Realiza las validaciones generales y particulares de cada tipo de pieza. Si no hay inconveniente, 
+				asigna la nueva posicion al objeto tipo pieza.
+		->Regresa true si el movimiento fue validado y false si no */
 bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool turno){
 	Pieza* casillaOrigen=buscarPieza(fila1,columna1);
 	Pieza* casillaDestino=buscarPieza(fila2,columna2);
@@ -338,6 +362,8 @@ bool Tablero::moverPieza(int fila1, int columna1, int fila2, int columna2, bool 
 
 	return true;
 }
+
+//Verifica que el Rey Blanco siga vivo
 bool Tablero::verificarReyB(){
 	for(int i=0; i<cantPiezas; i+=1){
 		if(listaPiezas[i]->getIcono()=="KB"){
@@ -346,6 +372,8 @@ bool Tablero::verificarReyB(){
 	}
 	return false;
 }
+
+//Verifica que el Rey Negro siga vivo
 bool Tablero::verificarReyN(){
 	for(int i=0; i<cantPiezas; i+=1){
 		if(listaPiezas[i]->getIcono()=="KN"){

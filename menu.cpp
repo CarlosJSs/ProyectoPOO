@@ -2,6 +2,8 @@
 
 Menu::Menu(){}
 
+/*Limpiar pantalla de la consola
+        Nos permite limpiar la pantalla dependiendo del OS del usuario */
 void Menu::limpiarPantalla(){
 	#ifdef _WIN32
         system("cls"); //Para windows
@@ -10,10 +12,14 @@ void Menu::limpiarPantalla(){
     #endif
 }
 
+/*Iniciar la partida de ajedrez
+        Crea un objeto Partida y comienza con el juego */
 void Menu::iniciarPartida(){
     Partida partida;
     partida.iniciarPartida(); 
 }
+
+//Mostrar las opciones del menu principal
 void Menu::mostrarMenu(){
 
 cout<<"\n\n";

@@ -1,15 +1,22 @@
 #include "rey.hpp"
 
+//Inicializa la pieza como un REY que no se ha movido
 Rey::Rey(): Pieza(){
 	primerMovimiento=true;
 	m_icono[0]='K';
 }
+//Al instanciarla le asigna una posicion (fila y columna), un equipo (color) e indica que no se ha movido antes
 Rey::Rey(int fila, int columna, char color): Pieza(fila,columna,color){
 	primerMovimiento=true;
 	m_icono[0]='K';
 }
+//Destructor por defecto
 Rey::~Rey(){}
 
+/*Validar que el movimiento indicado coincida con las reglas para el REY
+		->Recibe la posicion de la casilla de destino (fila y columna), el apuntador a la casilla destino (objeto tipo pieza)
+			y una matriz de 8x8 que representa los lugares libres y ocupados en el tablero.
+		->Regresa true si la pieza se puede mover a el destino indicado y false en caso de que no. */
 bool Rey::validarMovimiento(int fila, int columna, Pieza* casillaDestino, int TableroBin[8][8]){
     cout<<endl;
 
